@@ -27,10 +27,10 @@ t = 0
 while ind:
     attempt()
     time.sleep(10)
-    t = t + 1
-    print(t)
-    if (t == 2):
-        break
+    # t = t + 1
+    # print(t)
+    # if (t == 2):
+    #     break
 
 
 # # Play Sound
