@@ -1,7 +1,11 @@
 from urllib import request
 from bs4 import BeautifulSoup
 import time
+import datetime
 # import os
+import ctypes
+from twilio.rest import Client
+
 
 ind = 1
 
@@ -27,11 +31,28 @@ t = 0
 while ind:
     attempt()
     time.sleep(10)
+    print("Current time: ", datetime.datetime.now())
     # t = t + 1
     # print(t)
     # if (t == 2):
     #     break
 
+# Send SMS
+account_sid = 'YOUR_ACCOUNT_SID'
+auth_token = 'YOUR_AUTH_TOKEN'
+client = Client(account_sid, auth_token)
+
+message = client.messages \
+                .create(
+                     body="Econ 148 is AVAILABLE!",
+                     from_='+10000000000',
+                     to='+10000000000'
+                 )
+
+print(message.sid)
+
+print("Available at ", datetime.datetime.now())
+ctypes.windll.user32.FlashWindow(ctypes.windll.kernel32.GetConsoleWindow(), True )
 
 # # Play Sound
 # dir = 'C:\\Users\\fzc20\\Downloads\\fire-truck-air-horn_daniel-simion.mp3'
